@@ -1,0 +1,52 @@
+body {
+	background-color: WhiteSmoke;
+	margin: 0px;
+}
+
+.code {
+	font-size: 0.85em; 
+	font-family: Consolas,"Andale Mono", "Lucida Console", monospace;
+}
+
+#titlebar {
+	font-size: 1.5em;
+	font-family: sans-serif;
+	font-weight: bold;
+	background-color: #5A778D;
+	color: #ddd;
+	text-shadow: 1px 1px 0.5px #000;
+	padding: 15px;
+}
+#titlebar a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#menubar {
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 5px;
+	padding-left: 5px;	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #7D888F;
+}
+#menubar a {
+	color: #fff;
+	font-size: 1.25em;
+	text-decoration: none;
+	font-family: sans-serif;
+	border-left: thin solid #aaa;
+	border-right: thin solid #aaa;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#menubar a:hover {
+	color: orange;
+	background-color: #474D50;
+}
+
+#problem {
+	margin-left: 10%;
+	margin-right: 10%;
+}
