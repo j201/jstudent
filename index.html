@@ -9,21 +9,43 @@
 
     <body>
 		<div id="titlebar">
-			<span style="font-size:1.5em;"><a href="index.html">JStudent</a></span> - A problem-based JavaScript learning resource.
+			<span style="font-size:1.5em;"><a href="index.html">JStudent</a></span> - A fun, interactive JavaScript learning tool.
 		</div>
-		<div id="menubar">
-			<a href="problems.html">Problem List</a> <a href="help.html">Help</a>
-		</div>
+		<div id="menu-background"></div>
+		<ul id="menubar">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="about.html">About</a>
+			</li>
+			<li>
+				<a href="problem-list.html">Problem List</a>
+				<ol id="problems-dropdown" class="sub-menu">
+				</ol>
+			</li>
+		</ul>
+		<noscript>This page requires JavaScript to be enabled.</noscript>
+		<h2 id="subtitle">Introduction</h2>
 		<div id="problem">
-			<p id="description"></p>
+			<p id="desc">Hello and welcome to JStudent. JStudent is a series of problems designed to first help you learn the basics of JavaScript and then provide programming challenges to help you hone your skills. It isn't a comprehensive teaching source, but is designed to be used in conjunction with <a href="http://www.eloquentjs.net">books</a> and the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">JS docs</a> to help develop a practical understanding of JS.
+			<br><br>To solve a problem, just put code in the 'Solution' box so that the code in the 'Test' box will be true. An example is given below. Press 'Run code' to test your code and move on to the first problem.</p>
+			<h4>Test</h4>
 			<textarea id="code-test"></textarea>
-			<br>
+			<h4>Solution</h4>
 			<textarea id="code-input"></textarea>
+			<button id="run-code">Run code</button>
+			<p id="result"></p>
 		</div>
+		<p id="footer">JStudent was made by <a href="http://j201.github.io">j201</a>. Last updated June 2013.
+			<br>
+			<a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_CA"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a> JStudent is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_CA">Creative Commons Attribution 3.0 Unported License</a>.
+		</p>
 		<script type="text/javascript" src="codemirror/lib/codemirror.js"></script>
 		<script type="text/javascript" src="codemirror/mode/javascript/javascript.js"></script>
 		<script type="text/javascript" src="problems.js"></script>
-		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="menu.js"></script>
+		<script type="text/javascript" src="index.js"></script>
     </body>
     
 </html>

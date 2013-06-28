@@ -1,11 +1,22 @@
 body {
 	background-color: WhiteSmoke;
 	margin: 0px;
+	font-family: "Arial", "Helvetica", sans-serif;
 }
 
-.code {
-	font-size: 0.85em; 
-	font-family: Consolas,"Andale Mono", "Lucida Console", monospace;
+a {
+	color: #0C2926;
+}
+a:visited {
+	color: #247066;
+}
+
+h4 {
+	margin-bottom: 5px;
+}
+
+code {
+	padding:0px;
 }
 
 #titlebar {
@@ -22,20 +33,44 @@ body {
 	text-decoration: none;
 }
 
+#menu-background {
+	padding-bottom: 2em;
+	background-color: #7D888F;
+	border-top: 1px solid #aaa;
+	position: relative;
+	z-index: 1;
+}
+#menu-background:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 13px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #727E85;
+}
+
 #menubar {
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 5px;
-	padding-left: 5px;	
+	margin-top: -2.1em;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background-color: #7D888F;
+	padding-left: 0;
+	background-color: transparent;
+	position: relative;
+	z-index: 5;
+}
+#menubar li {
+	display: inline;
+	list-style: none;
+	position: relative;
+	margin-right:10px;
+	padding-bottom: 10px;
 }
 #menubar a {
 	color: #fff;
 	font-size: 1.25em;
 	text-decoration: none;
-	font-family: sans-serif;
 	border-left: thin solid #aaa;
 	border-right: thin solid #aaa;
 	padding-left: 5px;
@@ -45,8 +80,94 @@ body {
 	color: orange;
 	background-color: #474D50;
 }
+#menubar li:hover ol {
+	left:0;
+}
 
-#problem {
+#desc {
+	font-size: 0.95em;
+}
+
+#problems-dropdown {
+	display: none;
+	position: absolute;
+	padding-top: 5px;
+	background: transparent;
+	list-style: none;
+	padding-left: 0;
+}
+#problems-dropdown a {
+	font-size: 0.8em;
+	color: white;
+	background-color: #474D50;
+	border-bottom: 1px solid #aaa;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	display: block;
+}
+#problems-dropdown li:hover a {
+	color: orange;
+}
+#problems-dropdown li {
+	margin: 0;
+}
+#menubar li:hover #problems-dropdown {
+	display: block;
+}
+
+#problem, #subtitle, #menubar, body > p {
 	margin-left: 10%;
 	margin-right: 10%;
+}
+
+button {
+	margin-left: 20px;
+	margin-top: 5px;
+}
+
+#result a {
+	padding: 2px;
+}
+#result a:hover {
+	background-color: #ccc;
+}
+
+#footer {
+	margin-top: 80px;
+	text-align: center;
+	font-size: 0.7em;
+}
+
+.problems-list {
+	list-style:none;
+	display: inline-block;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 25%;
+}
+.problems-list li {
+	padding: 0px;
+	display: block;
+	border: 1px solid #aaa;
+	margin: 5px;
+	width: 100%;
+}
+.problems-list li:hover {
+	background-color: #ccc;
+	color: orange;
+}
+.problems-list li a {
+	text-decoration: none;
+	margin: 0px;
+	padding: 5px;
+	padding-left: 5%;
+	display: block;
+	height: 100%;
+}	
+
+#problem-list-columns {
+	list-style-type: none;
+	margin-left: auto;
+	margin-right: auto;
 }
