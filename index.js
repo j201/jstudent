@@ -1,4 +1,4 @@
-
+// Currently all global for testing
 var id = document.getElementById.bind(document);
 var codeInput = CodeMirror.fromTextArea(id("code-input"), {
 	mode : "javascript",
@@ -20,7 +20,7 @@ window.addEventListener("load", function() {
 	if (problemURI !== null) {
 		problemNo = Number(problemURI[1]);
 		if (problemNo > 0 && problemNo <= problems.length) {
-			var currentProblem = problems[problemNo - 1];
+			currentProblem = problems[problemNo - 1];
 
 			// Set code boxes 
 			codeTest.setValue(problems[problemNo - 1].test);
@@ -34,12 +34,8 @@ window.addEventListener("load", function() {
 			}
 			subtitle.appendChild(document.createTextNode(currentProblem.title));
 
-			// Set desc
-			var desc = id('desc');
-			while(desc.firstChild) {
-				desc.removeChild(desc.firstChild);
-			}
-			desc.appendChild(document.createTextNode(currentProblem.desc));
+			// Set desc - Uses innerHTML to allow for HTML tags in JS String
+			desc.innerHTML = currentProblem.desc;
 		} else
 			problemNo = 0;
 	} else
@@ -53,6 +49,7 @@ id('run-code').addEventListener('click', function() {
 
 	// Test code and generate message
 	var code = '"use strict";\n' + (currentProblem.runBefore || '') + '\n;' + codeInput.getValue() + '\n;' + codeTest.getValue();
+	console.log(code);
 	if (currentProblem.codeCheck && !currentProblem.codeCheck(codeInput.getValue())) {
 		message = currentProblem.codeCheckMessage;
 	} else {
@@ -65,6 +62,10 @@ id('run-code').addEventListener('click', function() {
 	}
 	if (!message && success) {
 		message = 'Test passed! ';
+		var solved = JSON.parse(localStorage.getItem('solved'));
+		solved[problemNo] = true;
+		localStorage.setItem('solved', JSON.stringify(solved));
+		populateProblemMenu();
 	} else if (!message) {
 		message = 'Test failed. Try again.';
 	}
