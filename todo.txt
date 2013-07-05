@@ -1,2 +1,3 @@
 - Comment JS
 - Add more problems
+- Favicon

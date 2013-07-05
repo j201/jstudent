@@ -963,7 +963,7 @@ window.CodeMirror = (function() {
 
     for (var pos = ch;; pos += dir) {
       var r = data[pos];
-      if (r) break;
+      if (r || pos < 0 || pos > data.length) break; // Modified here by j201
       if (dir < 0 && pos == 0) dir = 1;
     }
     var rightV = (pos < ch || bias == "right") && r.topRight != null;

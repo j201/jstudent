@@ -2,13 +2,19 @@
 var id = document.getElementById.bind(document);
 var codeInput = CodeMirror.fromTextArea(id("code-input"), {
 	mode : "javascript",
-	lineNumbers : true
+	lineNumbers : true,
+	tabSize : 4,
+	indentWithTabs : true,
+	indentUnit : 4
 });
 codeInput.setValue('var x = "Hi!";');
 var codeTest = CodeMirror.fromTextArea(id("code-test"), {
 	mode : "javascript",
 	readOnly : true,
-	height : "dynamic"
+	height : "dynamic",
+	tabSize : 4,
+	indentWithTabs : true,
+	indentUnit : 4
 });
 codeTest.setValue('x === "Hi!";');
 
@@ -43,6 +49,8 @@ window.addEventListener("load", function() {
 });
 
 id('run-code').addEventListener('click', function() {
+	/* jshint evil:true */
+
 	var success = false;
 	var message = '';
 	var result = id('result');
@@ -50,8 +58,8 @@ id('run-code').addEventListener('click', function() {
 	// Test code and generate message
 	var code = '"use strict";\n' + (currentProblem.runBefore || '') + '\n;' + codeInput.getValue() + '\n;' + codeTest.getValue();
 	console.log(code);
-	if (currentProblem.codeCheck && !currentProblem.codeCheck(codeInput.getValue())) {
-		message = currentProblem.codeCheckMessage;
+	if (currentProblem.check && !currentProblem.check(codeInput.getValue())) {
+		message = currentProblem.checkMsg;
 	} else {
 		try {
 			success = eval(code);
@@ -77,13 +85,12 @@ id('run-code').addEventListener('click', function() {
 	result.appendChild(document.createTextNode(message));
 	result.style.color = success ? "green" : "red";
 	if (success) {
+		var link = document.createElement('a');
 		if (problemNo < problems.length) {
-			var link = document.createElement('a');
 			link.href = 'index.html?problem=' + (problemNo + 1);
 			link.appendChild(document.createTextNode('Click here for the next problem.'));
 			result.appendChild(link);
 		} else {
-			var link = document.createElement('a');
 			link.href = "http://i.imgur.com/QZ4PY9C.gif";
 			link.appendChild(document.createTextNode('cat gif.'));
 			result.appendChild(document.createElement('br'));

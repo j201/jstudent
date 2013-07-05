@@ -169,11 +169,7 @@ button {
 	background-color: #ccc;
 }
 .problems-list .solved {
-	background-color: green;
-	color: white;
-}
-.problems-list li:hover .solved {
-	color: black;
+	background-color: #B3F5B2;
 }
 .problems-list li a {
 	text-decoration: none;
