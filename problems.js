@@ -100,27 +100,27 @@ var problems = [
 		test : "var arr1 = x(['Alice', 'Bob', 'Cathy']),\n    arr2 = x(['Kang', 'Kodos']);\n\narr1[0] === 'Hi, Alice!' && arr1[1] === 'Hi, Bob!' && arr1[2] === 'Hi, Cathy!' &&\narr2[0] === 'Hi, Kang!' && arr2[1] === 'Hi, Kodos!';",
 		check : function(code) { return !/\W(for|forEach|while)\W/.test(code); },
 		checkMsg : "Use map, not for, forEach, or while!",
-		disabledFns : [{obj : Array.prototype, prop : "forEach"}]
+		disableFns : [{obj : Array.prototype, prop : "forEach"}]
 	}, {
 		title : "Odd ones out",
 		desc : "<code>Array.prototype.filter</code> is a higher order function that takes a predicate (a function that returns truthy or falsy based on the input value) and returns a new array with only the elements for which that function was truthy. Use <code>filter</code>, not <code>for</code>, <code>forEach</code>, or <code>while</code>, to filter out the elements of an array that are odd numbers.",
 		test : "var arr1 = x([1, 2, 3, 4]);\nvar arr2 = x(['foo', 1, -2, 0]);\n\narr1.length === 2 && arr1[1] === 4 &&\narr2.length === 3 && arr2[1] === -2;",
 		check : function(code) { return !/\W(for|forEach|while)\W/.test(code); },
 		checkMsg : "Use filter, not for, forEach, or while!",
-		disabledFns : [{obj : Array.prototype, prop : "forEach"}]
+		disableFns : [{obj : Array.prototype, prop : "forEach"}]
 	}, {
 		title : "Sum it up v3",
 		desc : "The last built-in Array HOF we'll look at <code>Array.prototype.reduce</code>. It takes a function and passes it the first two elements of the array (or, if a value is passed to reduce as a second parameter, that value and the first element of the array). Then it takes the result of that, and passes it to the function again, along with the next element of the array. It continues to do that until all of the array elements have been processed. Use <code>reduce</code>, not <code>for</code>, <code>while</code>, or <code>forEach</code> to find the sum of the elements of an array.",
 		test : "x([1, 2, 3]) === 6 &&\nx([Math.PI, -50.1, Math.sqrt(2), 0xfab]) === 3965.455806215963;",
 		check : function(code) { return !/\W(for|forEach|while)\W/.test(code); },
 		checkMsg : "Use reduce, not for, forEach, or while!",
-		disabledFns : [{obj : Array.prototype, prop : "forEach"}]
+		disableFns : [{obj : Array.prototype, prop : "forEach"}]
 	}, {
 		title : "DIY HOF",
 		desc : 'Make your own higher order function that takes an array and a predicate function as input and returns true if the predicate returns true for at least one element of the array and false otherwise. (Note: This function exists as <code><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Array.prototype.some</a></code>, and <code><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Array.prototype.every</a></code> is similar, but those will be disabled for the test.)',
 		test : "x([1, 2, 3], function(num) { return num % 2 === 0; }) === true &&\nx(['foo', 'quux', 'jabberwocky'], function(str) { return str.length === 5; }) === false &&\nx([0, 3, 9], function(num) { return num < 0; }) === false;",
 		check : function(code) { return !/\W(some|every)\W/.test(code); },
 		checkMsg : "Solve this one without using some or every.",
-		disabledFns : [{obj : Array.prototype, prop : "some"}, {obj : Array.prototype, prop : "every"}]
+		disableFns : [{obj : Array.prototype, prop : "some"}, {obj : Array.prototype, prop : "every"}]
 	}
 ];

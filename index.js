@@ -85,9 +85,10 @@ id('run-code').addEventListener('click', function() {
 
 	// Reenable functions
 	if (currentProblem.disableFns) {
-		disabledFns.forEach(function(fn) {
+		for (var i = 0; i < disabledFns.length; i++) { // Uses for because Array#forEach might be disabled
+			var fn = disabledFns[i];
 			fn.obj[fn.prop] = fn.value;
-		});
+		}
 	}
 
 	// Display relevant message
