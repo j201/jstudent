@@ -54,8 +54,22 @@ id('run-code').addEventListener('click', function() {
 	var success = false;
 	var message = '';
 	var result = id('result');
+	var disabledFns = [];
 
 	// Test code and generate message
+	// Disable functions as specified in currentProblem.disableFns
+	if (currentProblem.disableFns) {
+		currentProblem.disableFns.forEach(function(fn) {
+			disabledFns.push({
+				obj : fn.obj,
+				prop : fn.prop,
+				value : fn.obj[fn.prop]
+			});
+			fn.obj[fn.prop] = undefined;
+		});
+	}
+
+	// Combine code components and run
 	var code = '"use strict";\n' + (currentProblem.runBefore || '') + '\n;' + codeInput.getValue() + '\n;' + codeTest.getValue();
 	console.log(code);
 	if (currentProblem.check && !currentProblem.check(codeInput.getValue())) {
@@ -68,6 +82,15 @@ id('run-code').addEventListener('click', function() {
 			success = false;
 		}
 	}
+
+	// Reenable functions
+	if (currentProblem.disableFns) {
+		disabledFns.forEach(function(fn) {
+			fn.obj[fn.prop] = fn.value;
+		});
+	}
+
+	// Display relevant message
 	if (!message && success) {
 		message = 'Test passed! ';
 		var solved = JSON.parse(localStorage.getItem('solved'));
