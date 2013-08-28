@@ -122,5 +122,13 @@ var problems = [
 		check : function(code) { return !/\W(some|every)\W/.test(code); },
 		checkMsg : "Solve this one without using some or every.",
 		disableFns : [{obj : Array.prototype, prop : "some"}, {obj : Array.prototype, prop : "every"}]
+	}, {
+		title : "GCD",
+		desc : 'Create a function that solves for the <a href="http://en.wikipedia.org/wiki/Greatest_common_divisor">greatest common divisor</a> of two numbers.',
+		test : "x(18, 28) === 2 && x(1065, 30) === 15 && x(2013, 30195) === 2013;"
+	}, {
+		title : "Prime Factors",
+		desc : 'Create a function that returns an array of the <a href="http://en.wikipedia.org/wiki/Prime_factor">prime factors</a> of a number in numerical order.',
+		test : "function arraysEqual(arr1, arr2) { // This function tests if two arrays have the same elements.\n\tif (arr1 == null || arr2 == null || arr1.length !== arr2.length)\n\t\treturn false;\n\tfor (var i = 0; i < arr1.length; i++) {\n\t\tif (arr1[i] !== arr2[i])\n\t\t\treturn false;\n\t}\n\treturn true;\n}\n\narraysEqual(x(390), [2, 3, 5, 13]) &&\narraysEqual(x(392), [2, 2, 2, 7, 7]) &&\narraysEqual(x(389), [389]);",
 	}
 ];
